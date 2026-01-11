@@ -8,9 +8,9 @@
 </head>
 
 <style>
-    .text-white {
-        color: white;
-    }
+    .text-white { color: white; }
+    .thumbnail { background-color:#1c1c1c; border:none; }
+    .thumbnail .caption { background-color:#1c1c1c; }
 </style>
 
 <body style="background-color:black">
@@ -40,26 +40,24 @@
             </form>
         </div>
 
-        <!-- 🔴 Error message -->
         {% if error %}
         <div class="col-md-12">
             <h3 style="color:red">{{ error }}</h3>
         </div>
         {% endif %}
 
-        <!-- ✅ Recommended books -->
         {% if data %}
-            {% for i in data %}
-            <div class="col-md-3" style="margin-top:30px">
-                <div class="thumbnail">
-                    <img src="{{ i[2] }}" alt="Book cover">
-                    <div class="caption">
-                        <p class="text-white"><strong>{{ i[0] }}</strong></p>
-                        <p class="text-white">{{ i[1] }}</p>
-                    </div>
+        {% for i in data %}
+        <div class="col-md-3" style="margin-top:30px">
+            <div class="thumbnail">
+                <img src="{{ i[2] }}" alt="Book cover" style="height:250px">
+                <div class="caption text-center">
+                    <p class="text-white"><strong>{{ i[0] }}</strong></p>
+                    <p class="text-white">{{ i[1] }}</p>
                 </div>
             </div>
-            {% endfor %}
+        </div>
+        {% endfor %}
         {% endif %}
 
     </div>
