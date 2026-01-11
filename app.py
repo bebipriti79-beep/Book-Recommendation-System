@@ -23,7 +23,7 @@ def index():
 
 @app.route('/recommend')
 def recommend_ui():
-    return render_template('recommend.html')
+    return render_template('recommended.html')
 
 @app.route('/recommend_books', methods=['POST'])
 def recommend():
@@ -31,12 +31,12 @@ def recommend():
 
     # ✅ Safety check 1: empty input
     if not user_input:
-        return render_template('recommend.html', error="Please enter a book name")
+        return render_template('recommended.html', error="Please enter a book name")
 
     # ✅ Safety check 2: book not in dataset
     if user_input not in pt.index:
         return render_template(
-            'recommend.html',
+            'recommended.html',
             error="Book not found. Please try another title."
         )
 
@@ -58,7 +58,7 @@ def recommend():
             temp_df.iloc[0]['Image-URL-M']
         ])
 
-    return render_template('recommend.html', data=data)
+    return render_template('recommended.html', data=data)
 
 # ⚠️ Render uses Gunicorn, but keep this for local testing
 if __name__ == '__main__':
